@@ -18,7 +18,7 @@ class Command(BaseCommand):
                         Ingredients.objects.get_or_create(
                             name=row['name'],
                             measurement_unit=row['measurement_unit']
-                            )
+                        )
                     self.stdout.write(
                         self.style.SUCCESS(
                             'The users are uploaded to the database.'
