@@ -127,8 +127,8 @@ USE_TZ = True
 STATIC_URL = '/my_static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'my_static')
 
-MEDIA_URL = "/my_media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "my_media")
+MEDIA_URL = '/my_media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'my_media')
 
 RECIPES_LIMIT = 6
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
