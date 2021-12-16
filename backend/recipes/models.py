@@ -201,7 +201,7 @@ class ShoppingCart(models.Model):
     )
 
     class Meta:
-        verbose_name = 'Корзина'
+        verbose_name = 'Список покупок'
         verbose_name_plural = verbose_name
         constraints = [
             models.UniqueConstraint(
