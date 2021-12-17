@@ -1,12 +1,13 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
+
 from rest_framework import serializers
 from rest_framework.generics import get_object_or_404
 
 from users.serializers import UserDetailSerializer
 from .fields import Base64ImageField
-from .models import (Tag, Ingredient, Recipe, RecipeIngredient, ReceiptTag,
-                     Follow, Favorite, ShoppingCart)
+from .models import (Favorite, Follow, Ingredient, ReceiptTag, Recipe,
+                     RecipeIngredient, ShoppingCart, Tag)
 
 User = get_user_model()
 
@@ -251,8 +252,7 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
         self.add_tags(tags_data, instance)
         RecipeIngredient.objects.filter(recipe=instance).delete()
         self.add_ingredient(ingredient_data, instance)
-        instance.name = validated_data.pop('name')
-        instance.text = validated_data.pop('text')
+        super().update(instance, validated_data)
         if validated_data.get('image') is not None:
             instance.image = validated_data.pop('image')
         instance.cooking_time = validated_data.pop('cooking_time')
