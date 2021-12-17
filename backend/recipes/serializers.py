@@ -253,10 +253,6 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
         RecipeIngredient.objects.filter(recipe=instance).delete()
         self.add_ingredient(ingredient_data, instance)
         super().update(instance, validated_data)
-        if validated_data.get('image') is not None:
-            instance.image = validated_data.pop('image')
-        instance.cooking_time = validated_data.pop('cooking_time')
-        instance.save()
         return instance
 
     def to_representation(self, instance):
