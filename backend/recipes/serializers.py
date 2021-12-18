@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.contrib.auth import get_user_model
-
 from rest_framework import serializers
 from rest_framework.generics import get_object_or_404
 
@@ -252,7 +251,10 @@ class CreateRecipeSerializer(serializers.ModelSerializer):
         self.add_tags(tags_data, instance)
         RecipeIngredient.objects.filter(recipe=instance).delete()
         self.add_ingredient(ingredient_data, instance)
-        super().update(instance, validated_data)
+        if validated_data.get('image') is not None:
+            instance.image = validated_data.pop('image')
+        instance.cooking_time = validated_data.pop('cooking_time')
+        instance.save()
         return instance
 
     def to_representation(self, instance):
