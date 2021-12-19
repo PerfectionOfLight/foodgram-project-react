@@ -1,16 +1,16 @@
-from django_filters import rest_framework as filters
+import django_filters
 
 from .models import Ingredient, Recipe
 
 
-class RecipeFilter(filters.FilterSet):
-    tags = filters.AllValuesMultipleFilter(
+class RecipeFilter(django_filters.FilterSet):
+    tags = django_filters.AllValuesMultipleFilter(
         field_name='receipttag__tag__slug'
     )
-    is_favorited = filters.BooleanFilter(
+    is_favorited = django_filters.BooleanFilter(
         method='get_favorite'
     )
-    is_in_shopping_cart = filters.BooleanFilter(
+    is_in_shopping_cart = django_filters.BooleanFilter(
         method='get_in_shopping_cart'
     )
 
@@ -38,8 +38,8 @@ class RecipeFilter(filters.FilterSet):
         return Recipe.objects.all()
 
 
-class IngredientFilter(filters.FilterSet):
-    name = filters.CharFilter(
+class IngredientFilter(django_filters.FilterSet):
+    name = django_filters.CharFilter(
         field_name='name',
         lookup_expr='icontains'
     )
