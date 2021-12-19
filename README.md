@@ -46,14 +46,23 @@ praktikum_new_diplom
 - psycopg2==2.8.6
 - django-import-export==2.5.0
 
-### Инструкция по запуску
-Проект разворачивается на сервер автоматически через git push.
+### Инструкция по развёртыванию
+- Из каталога infra выполните:
+- docker-compose up -d
+- docker-compose exec backend python manage.py migrate --noinput
+- docker-compose exec backend python manage.py collectstatic --no-input
 
-### Автор
-https://github.com/PerfectionOfLight
+- Суперпользователь:
+- ryabchuk@yandex.ru - почта
+- ryabchuk - пароль
 
 ### Адреса сервера
 - IP: 217.28.239.32,
 - Можно также: praktikumpodpivasom.ga, www.praktikumpodpivasom.ga
+- Админка: 217.28.239.32/admin
+
+### Автор
+https://github.com/PerfectionOfLight
+
  
-![example workflow](https://github.com/PerfectionOfLight/yamdb_final/actions/workflows/yamdb_workflow.yaml/badge.svg)
+![example workflow](https://github.com/PerfectionOfLight/foodgram-project-react/actions/workflows/yamdb_workflow.yaml/badge.svg)
