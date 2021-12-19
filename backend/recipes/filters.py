@@ -4,9 +4,8 @@ from .models import Ingredient, Recipe
 
 
 class RecipeFilter(django_filters.FilterSet):
-    tags = django_filters.AllValuesMultipleFilter(
-        field_name='receipttag__tag__slug',
-        null_value=''
+    tags = django_filters.BooleanFilter(
+        method='get_tag'
     )
     is_favorited = django_filters.BooleanFilter(
         method='get_favorite'
@@ -23,6 +22,13 @@ class RecipeFilter(django_filters.FilterSet):
             'author',
             'tags'
         )
+
+    def get_tag(self, queryset, name, value):
+        if value:
+            return Recipe.objects.filter(
+                tags=self.request.tags
+            )
+        return Recipe.objects.all()
 
     def get_favorite(self, queryset, name, value):
         if value:
