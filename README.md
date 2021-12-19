@@ -52,7 +52,7 @@ praktikum_new_diplom
 - docker-compose exec backend python manage.py migrate --noinput
 - docker-compose exec backend python manage.py collectstatic --no-input
 
-- Суперпользователь:
+### Суперпользователь:
 - ryabchuk@yandex.ru - почта
 - ryabchuk - пароль
 
