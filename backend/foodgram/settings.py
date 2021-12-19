@@ -6,6 +6,7 @@ SECRET_KEY = 'trhtrhrt'
 
 DEBUG = True
 
+
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
