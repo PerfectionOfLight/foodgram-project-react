@@ -65,4 +65,4 @@ praktikum_new_diplom
 https://github.com/PerfectionOfLight
 
  
-![example workflow](https://github.com/PerfectionOfLight/foodgram-project-react/actions/workflows/yamdb_workflow.yaml/badge.svg)
+![example workflow](https://github.com/PerfectionOfLight/foodgram-project-react/actions/workflows/main.yml/badge.svg)
