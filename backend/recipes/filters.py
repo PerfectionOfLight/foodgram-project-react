@@ -4,7 +4,7 @@ from .models import Ingredient, Recipe
 
 
 class RecipeFilter(django_filters.FilterSet):
-    tags = django_filters.CharFilter(lookup_expr='name')
+    tags = django_filters.CharFilter(name='name', lookup_expr='contains')
     is_favorited = django_filters.BooleanFilter(
         method='get_favorite'
     )
