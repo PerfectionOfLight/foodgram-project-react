@@ -6,7 +6,7 @@ from .models import Ingredient, Recipe
 class RecipeFilter(django_filters.FilterSet):
     tags = django_filters.AllValuesMultipleFilter(
         field_name='receipttag__tag__slug',
-        always_filter=False
+        null_value=''
     )
     is_favorited = django_filters.BooleanFilter(
         method='get_favorite'
