@@ -1,6 +1,6 @@
 import django_filters
 
-from .models import Ingredient, Recipe
+from .models import Ingredient, Recipe, ReceiptTag
 
 
 class RecipeFilter(django_filters.FilterSet):
@@ -26,10 +26,12 @@ class RecipeFilter(django_filters.FilterSet):
 
     def get_tag(self, queryset, name, value):
         if value:
-            return Recipe.objects.filter(
-                tags=self.request.tags
+            return ReceiptTag.objects.filter(
+                tags=None
             )
-        return Recipe.objects.all()
+        return ReceiptTag.objects.filter(
+            tags=None
+        )
 
     def get_favorite(self, queryset, name, value):
         if value:
