@@ -5,8 +5,7 @@ from .models import Ingredient, Recipe, ReceiptTag
 
 class RecipeFilter(django_filters.FilterSet):
     tags = django_filters.AllValuesMultipleFilter(
-        field_name='receipttag__tag__slug',
-        method='get_tag'
+        field_name='receipttag__tag__name',
     )
     is_favorited = django_filters.BooleanFilter(
         method='get_favorite'
@@ -22,15 +21,6 @@ class RecipeFilter(django_filters.FilterSet):
             'is_in_shopping_cart',
             'author',
             'tags'
-        )
-
-    def get_tag(self, queryset, name, value):
-        if value:
-            return ReceiptTag.objects.filter(
-                tags=None
-            )
-        return ReceiptTag.objects.filter(
-            tags=None
         )
 
     def get_favorite(self, queryset, name, value):
