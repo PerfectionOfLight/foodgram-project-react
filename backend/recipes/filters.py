@@ -1,10 +1,13 @@
 import django_filters
 
-from .models import Ingredient, Recipe, ReceiptTag
+from .models import Ingredient, Recipe
 
 
 class RecipeFilter(django_filters.FilterSet):
-    tags = ReceiptTag.objects.all()
+    tags = django_filters.AllValuesMultipleFilter(
+        field_name='receipttag__tag__slug',
+        method='get_tag'
+    )
     is_favorited = django_filters.BooleanFilter(
         method='get_favorite'
     )
