@@ -1,9 +1,22 @@
 import django_filters
+from django import forms
 
 from .models import Ingredient, Recipe
 
 
+class NonValidatingMultipleChoiceField(forms.MultipleChoiceField):
+    def validate(self, value):
+        pass
+
+
+class CustomFilter(django_filters.AllValuesMultipleFilter):
+    field_class = NonValidatingMultipleChoiceField
+
+
 class RecipeFilter(django_filters.FilterSet):
+    tags = CustomFilter(
+        field_name='tags__slug'
+    )
     is_favorited = django_filters.BooleanFilter(
         method='get_favorite'
     )
