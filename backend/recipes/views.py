@@ -1,10 +1,5 @@
-from re import escape
-import re
 from django.contrib.auth import get_user_model
 from django.db.models import Sum
-from django.db.models.expressions import F
-from django.db.models.query import QuerySet
-from django.db.models.query_utils import Q
 from django.http import HttpResponse
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, status, viewsets
@@ -14,7 +9,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .filters import IngredientFilter, RecipeFilter
-from .models import (Favorite, Follow, Ingredient, ReceiptTag, Recipe, RecipeIngredient,
+from .models import (Favorite, Follow, Ingredient, Recipe, RecipeIngredient,
                      ShoppingCart, Tag)
 from .paginators import CustomPageNumberPaginator
 from .permissions import AdminOrAuthorOrReadOnly
